@@ -2,14 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import h5py
 from scipy.stats import linregress
+import argparse
 
-# Function to extract peak energy and tail slope
 def extract_peak_and_tail_slope(waveform):
     # Find the peak index and value
     peak_index = np.argmax(waveform)
     peak_value = waveform[peak_index]
 
-    # Calculate tail slope using the last segment of the waveform (adjust as needed)
+    # Calculate tail slope using the last segment of the waveform 
     tail_segment = waveform[-500:]  # Using the last 500 samples for tail slope calculation
     time = np.arange(len(tail_segment))  # Create a time index for the tail segment
     slope, intercept, _, _, _ = linregress(time, tail_segment)
@@ -17,40 +17,9 @@ def extract_peak_and_tail_slope(waveform):
     return peak_index, peak_value, slope
 
 # Main function to load data and visualize results
-def main():
-    # List of HDF5 files
-    files = [
-        "MJD_NPML_1.hdf5",
-        "MJD_NPML_2.hdf5",
-        "MJD_Test_0.hdf5",
-        "MJD_Test_1.hdf5",
-        "MJD_Test_2.hdf5",
-        "MJD_Test_3.hdf5",
-        "MJD_Test_4.hdf5",
-        "MJD_Test_5.hdf5",
-        "MJD_Train_0.hdf5",
-        "MJD_Train_1.hdf5",
-        "MJD_Train_2.hdf5",
-        "MJD_Train_3.hdf5",
-        "MJD_Train_4.hdf5",
-        "MJD_Train_5.hdf5",
-        "MJD_Train_6.hdf5",
-        "MJD_Train_7.hdf5",
-        "MJD_Train_8.hdf5",
-        "MJD_Train_9.hdf5",
-        "MJD_Train_10.hdf5",
-        "MJD_Train_11.hdf5",
-        "MJD_Train_12.hdf5",
-        "MJD_Train_13.hdf5",
-        "MJD_Train_14.hdf5",
-        "MJD_Train_15.hdf5"
-    ]
-
-    # Select the file to analyze
-    file_path = 'data/' + files[2]  # Change index to analyze different files
-
+def main(args):
     # Load data from HDF5 file
-    with h5py.File(file_path, 'r') as file:
+    with h5py.File(args.file_path, 'r') as file:
         # Load the raw waveforms
         raw_waveform = np.array(file["raw_waveform"])
 
@@ -112,7 +81,13 @@ def main():
     plt.legend()
     plt.show()
 
+# Argument parser to allow flexible input from command line
+def parse_args():
+    parser = argparse.ArgumentParser(description="Analyze waveform data from an HDF5 file.")
+    parser.add_argument('file_path', type=str, help="Path to the HDF5 file.")
+    return parser.parse_args()
+
 # Entry point of the script
 if __name__ == "__main__":
-    main()
-
+    args = parse_args()
+    main(args)

@@ -13,3 +13,8 @@ python code.py ./data/MJD_Test_1.hdf5
 ```
 
 The code will extract the energy and tail slope, plot the waveform, and open the plot in a new terminal window.
+
+
+## Data
+
+The data can be donwloaded at the following [ReadMe]([readme.com](https://dataplanet.ucsd.edu/dataset.xhtml?persistentId=perma:83.ucsddata/UQWQAV)).

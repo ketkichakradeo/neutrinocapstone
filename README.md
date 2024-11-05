@@ -17,4 +17,4 @@ The code will extract the energy and tail slope, plot the waveform, and open the
 
 ## Data
 
-The data can be donwloaded at the following [ReadMe]([readme.com](https://dataplanet.ucsd.edu/dataset.xhtml?persistentId=perma:83.ucsddata/UQWQAV)).
+The data can be downloaded at the following [link](https://dataplanet.ucsd.edu/dataset.xhtml?persistentId=perma:83.ucsddata/UQWQAV).

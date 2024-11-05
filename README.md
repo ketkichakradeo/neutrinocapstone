@@ -18,3 +18,6 @@ The code will extract the energy and tail slope, plot the waveform, and open the
 ## Data
 
 The data can be downloaded at the following [link](https://dataplanet.ucsd.edu/dataset.xhtml?persistentId=perma:83.ucsddata/UQWQAV).
+
+## Software Dependencies
+The script can be run on a terminal in a python environment. All imports and packages are included within the script.
